@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anta&family=Kode+Mono:wght@400..700&family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Question Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="directory">
+    <ul class="directory-list">
+        <img src="logo.png" class="directory-logo" width="70" alt="">
+        <li class="directory-item"><a href="index.html">Home</a></li>
+        <li class="directory-item"><a href="https://h3l.fun">H3L</a></li>
+        <li class="directory-item"><a href="login.html">Login</a></li>
+        <li class="directory-item"><a href="login.html">Signup</a></li>
+        <li class="directory-item"><a href="dashboard/me.html">Dashboard</a></li>
+        <div id="user-button">
+            <script>
+                const script = document.createElement('script');
+                script.setAttribute('data-clerk-publishable-key', `pk_test_Y3J1Y2lhbC1wYXJha2VldC02Ni5jbGVyay5hY2NvdW50cy5kZXYk`);
+                script.async = true;
+                script.src = `https://https://crucial-parakeet-66.clerk.accounts.dev/npm/@clerk/clerk-js@latest/dist/clerk.browser.js`;
+
+                script.addEventListener('load', async function () {
+                    await window.Clerk.load();
+
+                    const userButtonComponent = document.querySelector('#user-button');
+
+                    window.Clerk.mountUserButton(userButtonComponent);
+                });
+                document.body.appendChild(script);
+            </script>
+    </ul>
+</div>
+<center><div id="app"></div></center>
+<div class="question-form">
+    <h1>Add a Question</h1>
+    <form>
+        <!-- Question -->
+        <div class="form-group">
+            <label for="question">Question 1</label>
+            <input type="text" id="question1" placeholder="Enter your question" required>
+        </div>
+
+        <!-- Answer Options -->
+        <div class="form-group">
+            <label for="answer1">Answer 1</label>
+            <input type="text" id="answer1" placeholder="Enter answer 1" required>
+        </div>
+        <div class="form-group">
+            <label for="answer2">Answer 2</label>
+            <input type="text" id="answer2" placeholder="Enter answer 2" required>
+        </div>
+        <div class="form-group">
+            <label for="answer3">Answer 3</label>
+            <input type="text" id="answer3" placeholder="Enter answer 3" required>
+        </div>
+        <div class="form-group">
+            <label for="answer4">Answer 4</label>
+            <input type="text" id="answer4" placeholder="Enter answer 4" required>
+        </div>
+
+        <!-- Add another question -->
+        <div id="additional-questions"></div>
+        <button type="button" onclick="addQuestion()">Add Another Question</button>
+
+        <!-- Submit button -->
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<script
+        async
+        crossorigin="anonymous"
+        data-clerk-publishable-key="pk_test_Y3J1Y2lhbC1wYXJha2VldC02Ni5jbGVyay5hY2NvdW50cy5kZXYk"
+        onload="window.Clerk.load()"
+        src="https://crucial-parakeet-66.clerk.accounts.dev/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+        type="text/javascript"
+></script>
+
+<script>
+    window.addEventListener("load", async function () {
+        await Clerk.load();
+
+        if (Clerk.user) {
+            document.getElementById("app").innerHTML = `
+            <div id="user-button"></div>
+          `;
+
+            const userButtonDiv = document.getElementById("user-button");
+
+            Clerk.mountUserButton(userButtonDiv);
+        } else {
+            document.getElementById("app").innerHTML = `
+            <div id="sign-in"></div>
+          `;
+
+        }
+    });
+</script>
+
+<script>
+    var questionCount = 1;
+
+    function addQuestion() {
+        questionCount++;
+
+        var additionalQuestionsDiv = document.getElementById("additional-questions");
+
+        var questionDiv = document.createElement("div");
+        questionDiv.classList.add("form-group");
+
+        var questionLabel = document.createElement("label");
+        questionLabel.textContent = "Question " + questionCount;
+
+        var questionInput = document.createElement("input");
+        questionInput.type = "text";
+        questionInput.id = "question" + questionCount;
+        questionInput.placeholder = "Enter your question";
+        questionInput.required = true;
+
+        questionDiv.appendChild(questionLabel);
+        questionDiv.appendChild(questionInput);
+
+        var answerDiv = document.createElement("div");
+        answerDiv.classList.add("form-group");
+
+        for (var i = 1; i <= 4; i++) {
+            var answerLabel = document.createElement("label");
+            answerLabel.textContent = "Answer " + i;
+
+            var answerInput = document.createElement("input");
+            answerInput.type = "text";
+            answerInput.placeholder = "Enter answer " + i;
+            answerInput.required = true;
+
+            answerDiv.appendChild(answerLabel);
+            answerDiv.appendChild(answerInput);
+        }
+
+        additionalQuestionsDiv.appendChild(questionDiv);
+        additionalQuestionsDiv.appendChild(answerDiv);
+    }
+</script>
+</body>
+</html>

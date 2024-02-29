@@ -1,0 +1,198 @@
+body {
+    background: white;
+    color: black;
+    font-family: "Anta", sans-serif;
+}
+h1 {
+    font-family: "Tomorrow", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h3 {
+    font-family: "Tomorrow", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+a {
+    color: black;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+}
+
+.nav {
+    background-color: #007ea1;
+    height: 70px;
+}
+
+.nav-inner {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 70px;
+}
+
+.nav-logo-wrap img {
+    width: 120px;
+}
+
+.nav-menu-2 {
+    display: flex;
+}
+
+.nav-link {
+    margin-right: 10px;
+    justify-content: center;
+    text-align: left;
+    font-size: large;
+    text-decoration: none;
+    color: #000000;
+
+}
+
+.menu-button {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .nav-inner {
+        flex-direction: column;
+    }
+
+    .nav-menu-2 {
+        display: none;
+        flex-direction: column;
+    }
+
+    .menu-button {
+        display: block;
+        cursor: pointer;
+    }
+
+    .menu-icon {
+        width: 30px;
+        height: 4px;
+        background-color: #333;
+        margin: 6px 0;
+    }
+
+    .menu-open .nav-menu-2 {
+        display: flex;
+    }
+}
+
+button {
+    background-color: #1E90FF;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 200px;
+    font-family: "Tomorrow", sans-serif;
+    outline: none;
+}
+
+.directory {
+    background-color: #007ea1;
+    color: white;
+    padding: 0px;
+}
+
+.directory-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.directory-list {
+    list-style-type: none;
+    padding: 0;
+    color: white;
+    display: flex; /* Add this line to create a flex container */
+    align-items: center; /* Add this line to vertically center items */
+}
+
+.directory-list a {
+    color: white;
+}
+
+.directory-item {
+    font-size: 16px;
+    margin-bottom: 5px;
+    margin-left: 10px; /* Add this line to create spacing between items */
+}
+
+.directory-logo {
+    margin-right: 10px; /* Add this line to create spacing between logo and items */
+}
+
+.form-container {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid rgba(#adadad);
+    background-color: white;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-family: "Anta", sans-serif;
+}
+
+.form-group button {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(to right, #00b8ff, #1E90FF);
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: "Tomorrow", sans-serif;
+}
+
+.form-group button:hover {
+    background-color: #00a29c;
+}
+
+.ana {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.ana button {
+    margin-left: 10px;
+    padding-left: 10px;
+}
+
+span {
+    font-size: 19px;
+}
+
+#user-button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 10px;
+    margin-left: auto;
+
+}

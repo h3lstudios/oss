@@ -1,0 +1,16 @@
+{
+  "name": "oss",
+  "version": "1.0.0",
+  "description": "An live quiz platform where individuals can enjoy.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "H3L",
+  "license": "MIT",
+  "dependencies": {
+    "@clerk/clerk-js": "^4.70.0",
+    "mongoose": "^8.2.0"
+  }
+}

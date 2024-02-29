@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anta&family=Kode+Mono:wght@400..700&family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <title>oss</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="body">
+<div class="directory">
+  <ul class="directory-list">
+    <img src="../logo.png" class="directory-logo" width="70" alt="">
+    <li class="directory-item"><a href="../index.html">Home</a></li>
+    <li class="directory-item"><a href="https://h3l.fun">H3L</a></li>
+    <li class="directory-item"><a href="../login.html">Login</a></li>
+    <li class="directory-item"><a href="../login.html">Signup</a></li>
+    <li class="directory-item"><a href="me.html">Dashboard</a></li>
+    <div id="user-button">
+      <script>
+        const script = document.createElement('script');
+        script.setAttribute('data-clerk-publishable-key', `pk_test_Y3J1Y2lhbC1wYXJha2VldC02Ni5jbGVyay5hY2NvdW50cy5kZXYk`);
+        script.async = true;
+        script.src = `https://https://crucial-parakeet-66.clerk.accounts.dev/npm/@clerk/clerk-js@latest/dist/clerk.browser.js`;
+
+        script.addEventListener('load', async function () {
+          await window.Clerk.load();
+
+          const userButtonComponent = document.querySelector('#user-button');
+
+          window.Clerk.mountUserButton(userButtonComponent);
+        });
+        document.body.appendChild(script);
+      </script>
+  </ul>
+</div>
+<center><div id="app"></div></center>
+<div class="section center">
+  <div class="hero-content">
+    <h2 id="greeting"></h2>
+    <br>
+    <h1> </h1>
+    <br>
+    <center>
+    <div class="ana">
+    <button class="image-button">
+      <img src="host.png" alt="" width="150" height="150">
+      <span>Host</span>
+    </button>
+      <button class="image-button">
+        <a href="../join.html">
+        <img src="join.png" alt="" width="150" height="150">
+        <span>Join</span>
+      </button>
+      <button class="image-button">
+        <img src="sets.png" alt="" width="150" height="150">
+        <span>Edit/Create</span>
+      </button>
+    </div>
+    </center>
+  </div>
+</div>
+<div class="bottom-image-wrap"></div>
+<div class="footer">
+  <div class="wrap"></div>
+</div>
+
+<script
+        async
+        crossorigin="anonymous"
+        data-clerk-publishable-key="pk_test_Y3J1Y2lhbC1wYXJha2VldC02Ni5jbGVyay5hY2NvdW50cy5kZXYk"
+        onload="window.Clerk.load()"
+        src="https://crucial-parakeet-66.clerk.accounts.dev/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+        type="text/javascript"
+></script>
+
+<script>
+  window.addEventListener("load", async function () {
+    await Clerk.load();
+
+    if (Clerk.user) {
+      document.getElementById("app").innerHTML = `
+        <div id="user-button"></div>
+      `;
+
+      const userButtonDiv = document.getElementById("user-button");
+
+      Clerk.mountUserButton(userButtonDiv);
+
+      // Retrieve the User object from the session
+      const user = Clerk.user;
+
+      // Retrieve the username from the User object
+      const username = user.username;
+
+      // Get the current hour
+      const currentHour = new Date().getHours();
+
+      // Determine the greeting based on the current hour
+      let greeting;
+      if (currentHour < 12) {
+        greeting = "Good morning";
+      } else if (currentHour < 18) {
+        greeting = "Good afternoon";
+      } else {
+        greeting = "Good evening";
+      }
+
+      // Display the greeting with the username
+      const greetingElement = document.getElementById("greeting");
+      greetingElement.textContent = `${greeting}, ${username}`;
+    } else {
+      document.getElementById("app").innerHTML = `
+        <div id="sign-in"></div>
+      `;
+    }
+  });
+</script>
+
+</body>
+</html>
